@@ -12,13 +12,11 @@ type Issue struct {
 }
 
 type Event struct {
-    Actor Actor
     Event string
     Created_At string
-}
-
-type Actor struct {
-    login string
+    Actor struct {
+        Login string
+    }
 }
 
 func getIssues() []Issue {
