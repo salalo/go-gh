@@ -51,7 +51,8 @@ func issueTouched(event *Event) bool {
         "moved_columns_in_project",
     }
 
-    if event.Actor.Login == "salalo" && contains(ghEvents, event.Event) {
+    login := os.Getenv("GH_LOGIN")
+    if event.Actor.Login == login && contains(ghEvents, event.Event) {
         return true
     } else {
         return false
