@@ -10,6 +10,7 @@ func main() {
         c := make(chan []Event)
         go getIssueEvents(issue.Events_Url, c)
         events := <- c
+        close(c)
 
         for _, event := range events {
             // One positive event is enough to list issue as touched.
