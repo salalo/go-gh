@@ -31,11 +31,11 @@ func getIssues() []Issue {
     return issues
 }
 
-func getIssueEvents(eventUrl string) []Event {
+func getIssueEvents(eventUrl string, c chan []Event) {
     var events []Event
     getWithHeaders(eventUrl, &events)
 
-    return events
+    c <- events
 }
 
 func issueTouched(event *Event) bool {
