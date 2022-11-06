@@ -4,9 +4,8 @@ import "fmt"
 
 func main() {
     fmt.Println("Fetching todays issues you've been working on...")
-    issues := getIssues()
 
-    for _, issue := range issues {
+    for _, issue := range getIssues() {
         c := make(chan []Event)
         go getIssueEvents(issue.Events_Url, c)
         events := <- c
